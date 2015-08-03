@@ -33,14 +33,6 @@ class Lightning (var host: String) extends Plots with Three with Linked
 
   }
 
-  def deleteSession() {
-    if (session != -1) {
-      val url = host + "/sessions/" + session + "/delete"
-      post(url, "{}")
-      session = -1
-    }
-  }
-
   def plot(name: String, data: Map[String, Any]): Visualization = {
 
     this.checkSession()
@@ -88,6 +80,8 @@ class Lightning (var host: String) extends Plots with Three with Linked
     }
 
     implicit val formats = DefaultFormats
+
+    println("test")
 
     val response = request.asString
     response.body.toLowerCase match {
