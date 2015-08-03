@@ -5,7 +5,7 @@ import org.scalatest.FunSuite
 class LightningSuite extends FunSuite {
 
   test("create session") {
-    val lgn = Lightning("http://localhost:3000")
+    val lgn = Lightning("https://stormy-woodland-3975.herokuapp.com")
     lgn.createSession("test-session")
     assert(lgn.session > 0)
   }

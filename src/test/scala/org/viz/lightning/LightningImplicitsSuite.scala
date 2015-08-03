@@ -9,7 +9,7 @@ class LightningImplicitsSuite extends FunSuite with BeforeAndAfterAll {
   var lgn: Lightning = _
 
   override def beforeAll() {
-    lgn = Lightning("http://localhost:3000")
+    lgn = Lightning("https://stormy-woodland-3975.herokuapp.com")
     lgn.createSession("test-implicits")
   }
 

@@ -1,13 +1,14 @@
 package org.viz.lightning
 
-import org.viz.lightning.types.{Three, Plots, Linked}
+import org.viz.lightning.types.{Three, Plots, Linked, Streaming}
 
 import org.json4s._
 import org.json4s.native.JsonMethods._
 import org.json4s.native.Serialization
 import scalaj.http._
 
-class Lightning (var host: String) extends Plots with Three with Linked {
+class Lightning (var host: String) extends Plots with Three with Linked
+    with Streaming {
 
   var session: Int = -1
   var auth: Option[(String, String)] = None
@@ -30,6 +31,14 @@ class Lightning (var host: String) extends Plots with Three with Linked {
 
     session = id
 
+  }
+
+  def deleteSession() {
+    if (session != -1) {
+      val url = host + "/sessions/" + session + "/delete"
+      post(url, "{}")
+      session = -1
+    }
   }
 
   def plot(name: String, data: Map[String, Any]): Visualization = {

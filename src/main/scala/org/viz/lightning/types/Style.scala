@@ -68,3 +68,19 @@ case class Size(size: Array[Double]) extends Style {
 
 }
 
+case class Index(index: Array[Int]) extends Style {
+
+  def name = "index"
+  def defined = index.length > 0
+  def contents = index.toList
+
+}
+
+case class Color(color: Array[Array[Int]]) extends Style {
+
+  def name = "color"
+  def defined = color.length > 0
+  def contents = color.toList
+
+}
+
