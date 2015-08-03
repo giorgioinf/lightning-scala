@@ -81,8 +81,6 @@ class Lightning (var host: String) extends Plots with Three with Linked
 
     implicit val formats = DefaultFormats
 
-    println("test")
-
     val response = request.asString
     response.body.toLowerCase match {
       case "unauthorized" => throw new Exception("Unauthorized. Check username and/or password.")
